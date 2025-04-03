@@ -1,0 +1,20 @@
+{
+    "name": "meu-servidor",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Servidor HTTP básico com Node.js",
+    "main": "index.mjs",
+    "scripts": {
+      "start": "node index.mjs"
+    },
+    
+    "dependencies": {
+      "nodemon": "^3.1.9",
+      "pg": "^8.13.3",
+      "pg-hstore": "^2.3.4",
+      "prompt-sync": "^4.2.0"
+    },
+    "devDependencies": {
+      "sequelize": "^6.37.6"
+    }
+  }

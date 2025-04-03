@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: 'bitnami/postgresql:latest'
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=teste
+    volumes:
+      - poll_pg_data:/bitnami/postgresql
+
+  node_app:
+    build: .
+    container_name: node_app
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=admin
+      - DB_NAME=teste
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    command: ["node", "teste.js"]
+
+volumes:
+  poll_pg_data:
