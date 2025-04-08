@@ -27,7 +27,8 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
-    command: ["node", "teste.js"]
+    # 👇 Garante que o Prisma Client seja gerado dentro do container em tempo de execução
+    command: sh -c "npx prisma generate && npm run dev"
 
 volumes:
   poll_pg_data:
